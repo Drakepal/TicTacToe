@@ -105,6 +105,26 @@ struct ContentView: View {
         return false
     }
     
+    func checkWinner() {
+        
+        if checkMoves(player: "X") {
+            msg = "Player X Won!!!!"
+            gameOver.toggle()
+            
+        } else if checkMoves(player: "O") {
+            msg = "Player O Won!!!!"
+            gameOver.toggle()
+            
+        } else {
+            let status = moves.contains { (value) -> Bool in return value == ""
+                
+            }
+            if status {
+                msg = "Game Over. Tied!!!!"
+                gameOver.toggle()
+            }
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
