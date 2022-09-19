@@ -60,6 +60,23 @@ struct ContentView: View {
                 }
                 .padding()
             }
+            
+            .onChange(of: moves, perform: { value in
+                checkWinner()
+            })
+            
+            .alert(isPresented: $gameOver, content: {
+                
+                Alert(title: Text("Winner"), message: Text(msg), dismissButton: .destructive(Text("Play Again"), action: {
+                    withAnimation(Animation.easeIn(duration: 0.5)) {
+                        moves.removeAll()
+                        moves = Array(repeating: "", count: 9)
+                        isPlaying = true
+                    }
+                } ))
+            })
+            
+            
             .navigationTitle("Tic Tac Toe")
             .preferredColorScheme(.dark)
         }
