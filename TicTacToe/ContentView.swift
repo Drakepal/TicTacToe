@@ -70,6 +70,41 @@ struct ContentView: View {
         
         return width / 3
     }
+    
+    func checkMoves(player: String) -> Bool {
+        // Horizontal Moves
+        for i in stride(from: 0, to: 9, by: 3) {
+            
+            if moves[i] == player && moves [i + 1] == player && moves [ i + 2] == player {
+                
+                return true
+            }
+        }
+        
+        //Vertical Moves
+        
+        for i in 0...2 {
+            
+            if moves[i] == player && moves [i + 3] == player && moves [i + 6] == player {
+                
+                return true
+            }
+        }
+        
+        //Diagonal Moves
+        
+        if moves[0] == player && moves [4] == player && moves [8] == player {
+            
+            return true
+        }
+        
+        if moves[2] == player && moves [4] == player && moves [6] == player {
+            
+            return true
+        }
+        return false
+    }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
