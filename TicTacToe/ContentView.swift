@@ -136,7 +136,7 @@ struct ContentView: View {
             let status = moves.contains { (value) -> Bool in return value == ""
                 
             }
-            if status {
+            if !status {
                 msg = "Game Over. Tied!!!!"
                 gameOver.toggle()
             }
